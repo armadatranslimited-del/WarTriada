@@ -334,15 +334,23 @@ function refreshLosses(){
     function(j){ if (j && j.data && j.data.stats) { renderLosses(j.data); liveL = true; } setStatus(); },
     function(){ liveL = false; setStatus(); });
 }
+function applyAlerts(j){
+  if (!j || !j.states) return false;
+  var s = {}, n = 0;
+  for (var k in j.states) if (j.states.hasOwnProperty(k)) { s[k] = !!(j.states[k] && j.states[k].alertnow); n++; }
+  if (n < 10) return false;
+  renderAlerts({cachedat: String(j.cachedat || ""), states: s});
+  return true;
+}
+// 1) пряме джерело; 2) якщо браузер не пускає — копія alerts.json, яку GitHub оновлює кожні 5 хв
 function refreshAlerts(){
   getJSON("https://ubilling.net.ua/aerialalerts/",
-    function(j){
-      if (j && j.states) {
-        var s = {}; for (var k in j.states) if (j.states.hasOwnProperty(k)) s[k] = !!j.states[k].alertnow;
-        renderAlerts({cachedat: String(j.cachedat || ""), states: s}); liveA = true;
-      }
-      setStatus();
-    },
+    function(j){ if (applyAlerts(j)) { liveA = true; setStatus(); } else refreshAlertsMirror(); },
+    refreshAlertsMirror);
+}
+function refreshAlertsMirror(){
+  getJSON("alerts.json",
+    function(j){ liveA = applyAlerts(j); setStatus(); },
     function(){ liveA = false; setStatus(); });
 }
 
