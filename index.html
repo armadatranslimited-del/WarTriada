@@ -99,6 +99,30 @@ h2{font-family:"Oswald","Arial Narrow",Arial,sans-serif;font-weight:500;font-siz
 body.idle .fs{opacity:0}
 @media (prefers-reduced-motion:reduce){.ticker-track{-webkit-animation-duration:400s;animation-duration:400s}}
 
+/* compact losses (7 x 2) + video window */
+.cell{width:14.2857%;height:5.3vw;padding:.5vw .6vw}
+.cell .lbl{font-size:.74vw;line-height:1.15}
+.cell .num{left:.6vw;bottom:.45vw;font-size:1.5vw}
+.cell .inc{right:.5vw;bottom:2.05vw;font-size:.7vw}
+.cell.hero{width:100%;height:5.6vw;padding:.5vw 1.4vw}
+.cell.hero .lbl{font-size:.8vw;margin-top:.2vw}
+.cell.hero .num{left:1.4vw;bottom:.5vw;font-size:3.1vw}
+.cell.hero .inc{right:1.2vw;bottom:1.5vw;font-size:1.15vw;padding:.35vw .7vw}
+.vid{display:-webkit-box;display:-webkit-flex;display:flex;height:22.2vw}
+.vid-screen{width:39.5vw;height:22.2vw;background:#000;position:relative;overflow:hidden;border:1px solid #2d2d2d}
+.vid-screen video{width:100%;height:100%;display:block;background:#000;object-fit:cover}
+.vid-empty{position:absolute;left:0;top:0;right:0;bottom:0;padding:7.5vw 3vw 0;text-align:center;background:#1f1f1f}
+.vid-empty-t{font-family:"Oswald","Arial Narrow",Arial,sans-serif;font-size:1.6vw;color:#e4e1da}
+.vid-empty-s{font-size:.9vw;color:#9a968d;margin-top:.6vw}
+.vid-side{-webkit-flex:1;flex:1;width:0;margin-left:1vw;border-top:1px solid #2d2d2d;padding-top:.8vw;position:relative}
+.vid-k{font-size:.72vw;color:#9a968d;letter-spacing:.14em;text-transform:uppercase}
+.vid-n{font-family:"Oswald","Arial Narrow",Arial,sans-serif;font-size:2.6vw;line-height:1.1}
+.vid-bar{height:3px;background:#3d3d3d;margin:.6vw 0 1vw}
+.vid-bar i{display:block;height:3px;width:0;background:#c8b28a}
+.vid-list span{display:inline-block;width:1.6vw;height:.25vw;background:#3d3d3d;margin:0 .3vw .4vw 0}
+.vid-list span.on{background:#c8b28a}
+.vid-url{position:absolute;left:0;bottom:0;font-size:.75vw;color:#9a968d}
+
 /* calm theme overrides: accents only in small areas, no fills of bright colour */
 .inc{color:#c8b28a}
 .map-svg path.on{fill:#b49462} .map-svg circle.on{fill:#b49462}
@@ -125,6 +149,7 @@ h1,h2{color:#e4e1da}
   .col-l{width:auto;margin:0 0 20px}
   .head{height:auto;margin-bottom:8px} h2{font-size:4.2vw} .src,.map-time{font-size:2.8vw}
   .cell{width:50%;height:24vw;padding:2vw}
+  .vid{display:block;height:auto} .vid-screen{width:100%;height:56vw} .vid-side{width:auto;margin:3vw 0 0;padding-bottom:6vw} .vid-k,.vid-url{font-size:2.8vw} .vid-n{font-size:8vw} .vid-empty{padding-top:18vw} .vid-empty-t{font-size:5vw} .vid-empty-s{font-size:3vw}
   .cell .lbl{font-size:3vw} .cell .num{font-size:6.5vw;left:2vw;bottom:2vw} .inc{font-size:3vw} .cell .inc{right:2vw;bottom:2.4vw}
   .cell.hero{height:auto;min-height:30vw;padding:3vw 3vw 14vw} .cell.hero .lbl{font-size:3vw} .cell.hero .num{font-size:12vw;left:3vw;bottom:3vw} .cell.hero .inc{font-size:3.4vw;top:3vw;bottom:auto;right:3vw}
   .map-box{height:auto;padding:3vw} .alert-count{font-size:9vw} .alert-count small{font-size:3.2vw} .legend{font-size:3vw;right:3vw;top:3vw} .legend i{width:3vw;height:3vw}
@@ -151,6 +176,23 @@ h1,h2{color:#e4e1da}
   <section class="col-l">
     <div class="head"><h2>Загальні бойові втрати противника</h2><span class="src">Генштаб ЗСУ · з 24.02.2022</span></div>
     <div class="losses" id="grid"></div>
+    <div class="head" style="margin-top:.7vw"><h2>Triada Robotics · відео</h2><span class="src" id="vidCount"></span></div>
+    <div class="vid">
+      <div class="vid-screen" id="vidScreen">
+        <video id="vid" muted autoplay playsinline webkit-playsinline preload="auto"></video>
+        <div class="vid-empty" id="vidEmpty">
+          <div class="vid-empty-t">Тут крутитимуться ваші ролики</div>
+          <div class="vid-empty-s">Завантажте в репозиторій файли video1.mp4, video2.mp4, video3.mp4…</div>
+        </div>
+      </div>
+      <div class="vid-side">
+        <div class="vid-k">Ролик</div>
+        <div class="vid-n" id="vidNo">—</div>
+        <div class="vid-bar"><i id="vidProg"></i></div>
+        <div class="vid-list" id="vidList"></div>
+        <div class="vid-url">triada-robotics.com</div>
+      </div>
+    </div>
   </section>
   <section class="col-r">
     <div class="head"><h2>Повітряні тривоги</h2><span class="map-time">станом на <b id="alertTime">—</b></span></div>
@@ -252,8 +294,6 @@ function renderLosses(L){
     if (k !== "uav_systems") eq += inc;
     h += cell(LABELS[i][1], fmt(L.stats[k]), inc, (prev && prev.stats[k] !== L.stats[k]) ? "flash" : "");
   }
-  h += cell("Техніки знищено за добу (без БпЛА)", fmt(eq), 0, "", "од.");
-  h += cell("БпЛА знищено за добу", fmt(L.increase.uav_systems || 0), 0, "", "од.");
   $("grid").innerHTML = h;
 }
 
@@ -379,6 +419,45 @@ var idleT = null;
 function wake(){ document.body.className = ""; clearTimeout(idleT); idleT = setTimeout(function(){ document.body.className = "idle"; }, 4000); }
 document.addEventListener("mousemove", wake); document.addEventListener("keydown", wake); wake();
 try { if (navigator.wakeLock && navigator.wakeLock.request) navigator.wakeLock.request("screen")["catch"](function(){}); } catch (e) {}
+
+// ---- video loop: plays video1.mp4, video2.mp4, ... from the same folder ----
+var VID_MAX = 12, vidFound = [], vidProbe = 1, vidIdx = -1, vidFails = 0;
+var vid = $("vid");
+function vidUi(){
+  $("vidEmpty").style.display = vidFound.length ? "none" : "block";
+  $("vidNo").textContent = vidFound.length ? (pad2(vidIdx + 1) + " / " + pad2(vidFound.length)) : "—";
+  $("vidCount").textContent = vidFound.length ? ("роликів: " + vidFound.length) : "";
+  var l = ""; for (var i = 0; i < vidFound.length; i++) l += '<span class="' + (i === vidIdx ? 'on' : '') + '"></span>';
+  $("vidList").innerHTML = l;
+}
+function vidPlay(src){
+  vid.src = src;
+  try { vid.load(); } catch (e) {}
+  try { var pr = vid.play(); if (pr && pr["catch"]) pr["catch"](function(){}); } catch (e) {}
+}
+function vidNext(){
+  if (vidProbe <= VID_MAX) { vidPlay("video" + vidProbe + ".mp4"); return; }   // first pass: discover files
+  if (!vidFound.length) { setTimeout(function(){ vidProbe = 1; vidNext(); }, 300000); vidUi(); return; }
+  vidIdx = (vidIdx + 1) % vidFound.length; vidUi(); vidPlay(vidFound[vidIdx]);
+}
+vid.addEventListener("playing", function(){
+  if (vidProbe <= VID_MAX) {
+    var src = "video" + vidProbe + ".mp4";
+    if (vidFound.indexOf(src) < 0) vidFound.push(src);
+    vidIdx = vidFound.indexOf(src); vidUi();
+  }
+  vidFails = 0;
+});
+vid.addEventListener("ended", function(){ if (vidProbe <= VID_MAX) vidProbe++; vidNext(); });
+vid.addEventListener("error", function(){
+  if (vidProbe <= VID_MAX) { vidProbe = VID_MAX + 1; vidIdx = -1; vidNext(); return; } // no more numbered files
+  if (++vidFails > vidFound.length * 2) { vidFails = 0; return; }
+  vidNext();
+}, true);
+vid.addEventListener("timeupdate", function(){
+  if (vid.duration) $("vidProg").style.width = (100 * vid.currentTime / vid.duration) + "%";
+});
+vidUi(); vidNext();
 
 renderLosses(SNAP_LOSSES);
 renderAlerts(SNAP_ALERTS);
