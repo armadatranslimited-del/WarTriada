@@ -1,28 +1,28 @@
 <!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body><title>Війна в цифрах · Triada</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* TV-compatible build: no CSS variables, no grid, no min()/clamp, no flex gap. Sizes in vw so a 16:9 TV shows exactly one screen. Single deliberate dark look (colors set explicitly). */
-html,body{margin:0;padding:0;background:#02060a;color:#e6fbff;color-scheme:dark}
+html,body{margin:0;padding:0;background:#151515;color:#e4e1da;color-scheme:dark}
 body{font-family:"IBM Plex Sans",Arial,Helvetica,sans-serif;overflow-x:hidden}
 body.idle{cursor:none}
 *{box-sizing:border-box}
-.d{font-family:"Exo 2","Arial Narrow",Arial,sans-serif}
+.d{font-family:"Oswald","Arial Narrow",Arial,sans-serif}
 .m{font-family:"IBM Plex Mono",Consolas,"Courier New",monospace}
 
 /* top bar */
-.top{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;height:6.2vw;padding:0 2.2vw;border-bottom:1px solid #0f3a48}
+.top{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;height:6.2vw;padding:0 2.2vw;border-bottom:1px solid #2d2d2d}
 .top-l,.top-r{-webkit-flex:1;flex:1;width:0}
 .top-c{-webkit-flex:none;flex:none}
-h1{font-family:"Exo 2","Arial Narrow",Arial,sans-serif;font-weight:500;font-size:1.75vw;line-height:1.1;text-transform:uppercase;letter-spacing:.03em;margin:0}
+h1{font-family:"Oswald","Arial Narrow",Arial,sans-serif;font-weight:500;font-size:1.75vw;line-height:1.1;text-transform:uppercase;letter-spacing:.03em;margin:0}
 .logo{display:block;color:#ffffff}
 .logo svg{display:block;width:17.6vw;height:4.27vw}
 .top-r{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-justify-content:flex-end;justify-content:flex-end;-webkit-align-items:flex-end;align-items:flex-end}
 .meta{text-align:right;margin-left:2vw}
-.meta span{display:block;font-size:.72vw;color:#6fb6c4;letter-spacing:.12em;text-transform:uppercase}
-.meta strong{display:block;font-family:"Exo 2","Arial Narrow",Arial,sans-serif;font-weight:500;font-size:1.9vw;line-height:1.05}
+.meta span{display:block;font-size:.72vw;color:#9a968d;letter-spacing:.12em;text-transform:uppercase}
+.meta strong{display:block;font-family:"Oswald","Arial Narrow",Arial,sans-serif;font-weight:500;font-size:1.9vw;line-height:1.05}
 .meta.clock strong{font-size:2.6vw}
-.dot{display:inline-block;width:.55vw;height:.55vw;border-radius:50%;background:#3a6d78;margin-right:.4vw;vertical-align:middle}
-.live .dot{background:#00e5ff;-webkit-animation:pulse 1.6s infinite;animation:pulse 1.6s infinite}
+.dot{display:inline-block;width:.55vw;height:.55vw;border-radius:50%;background:#66635d;margin-right:.4vw;vertical-align:middle}
+.live .dot{background:#c8b28a;-webkit-animation:pulse 1.6s infinite;animation:pulse 1.6s infinite}
 @-webkit-keyframes pulse{50%{opacity:.25}} @keyframes pulse{50%{opacity:.25}}
 
 /* main */
@@ -30,92 +30,86 @@ h1{font-family:"Exo 2","Arial Narrow",Arial,sans-serif;font-weight:500;font-size
 .col-l{width:56%;margin-right:2vw}
 .col-r{-webkit-flex:1;flex:1;width:0}
 .head{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:baseline;align-items:baseline;height:2.3vw}
-h2{font-family:"Exo 2","Arial Narrow",Arial,sans-serif;font-weight:500;font-size:1.3vw;letter-spacing:.07em;text-transform:uppercase;margin:0}
-.src{font-size:.78vw;color:#6fb6c4}
+h2{font-family:"Oswald","Arial Narrow",Arial,sans-serif;font-weight:500;font-size:1.3vw;letter-spacing:.07em;text-transform:uppercase;margin:0}
+.src{font-size:.78vw;color:#9a968d}
 
-.losses{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;border-top:1px solid #0f3a48;border-left:1px solid #0f3a48}
-.cell{width:25%;height:8.15vw;border-right:1px solid #0f3a48;border-bottom:1px solid #0f3a48;padding:.75vw 1vw;position:relative;overflow:hidden}
-.cell .lbl{font-size:.92vw;color:#6fb6c4;line-height:1.2}
-.cell .num{position:absolute;left:1vw;bottom:.7vw;font-family:"Exo 2","Arial Narrow",Arial,sans-serif;font-weight:500;font-size:2.15vw;line-height:1;white-space:nowrap}
+.losses{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;border-top:1px solid #2d2d2d;border-left:1px solid #2d2d2d}
+.cell{width:25%;height:8.15vw;border-right:1px solid #2d2d2d;border-bottom:1px solid #2d2d2d;padding:.75vw 1vw;position:relative;overflow:hidden}
+.cell .lbl{font-size:.92vw;color:#9a968d;line-height:1.2}
+.cell .num{position:absolute;left:1vw;bottom:.7vw;font-family:"Oswald","Arial Narrow",Arial,sans-serif;font-weight:500;font-size:2.15vw;line-height:1;white-space:nowrap}
 .cell .inc{position:absolute;right:1vw;bottom:.85vw}
-.inc{font-family:"IBM Plex Mono",Consolas,"Courier New",monospace;font-size:.95vw;color:#ff9b2f;white-space:nowrap}
-.inc.zero{color:#3a6d78}
-.cell.hero{width:100%;height:9.2vw;background:#061219;padding-left:1.6vw}
-.cell.hero:before{content:"";position:absolute;left:0;top:0;bottom:0;width:.3vw;background:#00e5ff}
+.inc{font-family:"IBM Plex Mono",Consolas,"Courier New",monospace;font-size:.95vw;color:#c8b28a;white-space:nowrap}
+.inc.zero{color:#66635d}
+.cell.hero{width:100%;height:9.2vw;background:#1c1c1c;padding-left:1.6vw}
+.cell.hero:before{content:"";position:absolute;left:0;top:0;bottom:0;width:.3vw;background:#c8b28a}
 .cell.hero .lbl{font-size:1vw;letter-spacing:.12em;text-transform:uppercase;margin-top:.6vw}
 .cell.hero .num{left:1.6vw;bottom:1vw;font-weight:600;font-size:5vw}
-.cell.hero .inc{right:1.4vw;bottom:2.6vw;font-size:1.5vw;background:rgba(255,138,31,.14);padding:.5vw .9vw}
+.cell.hero .inc{right:1.4vw;bottom:2.6vw;font-size:1.5vw;background:transparent;padding:.5vw .9vw}
 .flash{-webkit-animation:flash 1.8s ease-out;animation:flash 1.8s ease-out}
-@-webkit-keyframes flash{from{background:rgba(255,138,31,.14)}} @keyframes flash{from{background:rgba(255,138,31,.14)}}
+@-webkit-keyframes flash{from{background:transparent}} @keyframes flash{from{background:transparent}}
 
 /* map */
-.map-box{background:#061219;border:1px solid #0f3a48;padding:.9vw 1.2vw;position:relative;height:24.6vw}
-.alert-count{font-family:"Exo 2","Arial Narrow",Arial,sans-serif;font-weight:500;font-size:3vw;line-height:1;color:#ff9b2f;text-shadow:0 0 1vw rgba(255,138,31,.6)}
-.alert-count small{font-family:"IBM Plex Sans",Arial,sans-serif;font-weight:400;font-size:1vw;color:#6fb6c4;margin-left:.4vw}
-.legend{position:absolute;right:1.2vw;top:1.2vw;font-size:.85vw;color:#6fb6c4}
+.map-box{background:#1c1c1c;border:1px solid #2d2d2d;padding:.9vw 1.2vw;position:relative;height:24.6vw}
+.alert-count{font-family:"Oswald","Arial Narrow",Arial,sans-serif;font-weight:500;font-size:3vw;line-height:1;color:#c8b28a}
+.alert-count small{font-family:"IBM Plex Sans",Arial,sans-serif;font-weight:400;font-size:1vw;color:#9a968d;margin-left:.4vw}
+.legend{position:absolute;right:1.2vw;top:1.2vw;font-size:.85vw;color:#9a968d}
 .legend i{display:inline-block;width:.8vw;height:.8vw;margin:0 .4vw 0 1.2vw;vertical-align:middle}
 .map-svg{display:block;width:26vw;height:18.5vw;margin:.4vw auto 0}
-.map-svg path{stroke:#00e5ff;stroke-opacity:.55;stroke-width:1.4;stroke-linejoin:round}
-.map-svg path.on{fill:#ff8a1f} .map-svg path.off{fill:#0a2630}
-.map-svg circle{stroke:#00e5ff;stroke-width:2.5}
-.map-svg circle.on{fill:#ff8a1f} .map-svg circle.off{fill:#1f6f80}
-.map-svg text{font-family:"IBM Plex Sans",Arial,sans-serif;font-size:21px;fill:#e6fbff;text-anchor:middle;stroke:rgba(0,0,0,.5);stroke-width:3px;paint-order:stroke}
-.map-time{font-size:.78vw;color:#6fb6c4}
+.map-svg path{stroke:#1c1c1c;stroke-width:1.8;stroke-linejoin:round}
+.map-svg path.on{fill:#c8b28a} .map-svg path.off{fill:#262626}
+.map-svg circle{stroke:#1c1c1c;stroke-width:2.5}
+.map-svg circle.on{fill:#c8b28a} .map-svg circle.off{fill:#5a5650}
+.map-svg text{font-family:"IBM Plex Sans",Arial,sans-serif;font-size:21px;fill:#e4e1da;text-anchor:middle;stroke:rgba(0,0,0,.5);stroke-width:3px;paint-order:stroke}
+.map-time{font-size:.78vw;color:#9a968d}
 
 /* showcase */
-.show{position:relative;height:13.4vw;border:1px solid #0f3a48;background:#061219;display:-webkit-box;display:-webkit-flex;display:flex;overflow:hidden}
-.show-media{width:42%;position:relative;border-right:1px solid #0f3a48;background:#04101a;text-align:center;overflow:hidden}
+.show{position:relative;height:13.4vw;border:1px solid #2d2d2d;background:#1c1c1c;display:-webkit-box;display:-webkit-flex;display:flex;overflow:hidden}
+.show-media{width:42%;position:relative;border-right:1px solid #2d2d2d;background:#1f1f1f;text-align:center;overflow:hidden}
 .show-media img{max-width:92%;max-height:11.5vw;margin-top:1vw}
-.show-media .mono{display:block;font-family:"Exo 2","Arial Narrow",Arial,sans-serif;font-weight:600;font-size:3.6vw;line-height:13.4vw;color:#0c3340;letter-spacing:.05em}
-.show-media .dom{position:absolute;left:.8vw;top:.6vw;font-family:"IBM Plex Mono",Consolas,monospace;font-size:.72vw;letter-spacing:.14em;color:#00e5ff}
+.show-media .mono{display:block;font-family:"Oswald","Arial Narrow",Arial,sans-serif;font-weight:600;font-size:3.6vw;line-height:13.4vw;color:#2a2a2a;letter-spacing:.05em}
+.show-media .dom{position:absolute;left:.8vw;top:.6vw;font-family:"IBM Plex Mono",Consolas,monospace;font-size:.72vw;letter-spacing:.14em;color:#c8b28a}
 .show-body{-webkit-flex:1;flex:1;width:0;padding:.8vw 1.1vw;position:relative}
-.show-kind{font-size:.8vw;color:#6fb6c4;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.show-name{font-family:"Exo 2","Arial Narrow",Arial,sans-serif;font-weight:600;font-size:2.6vw;line-height:1.05;letter-spacing:.06em;margin:.2vw 0}
-.show-note{font-size:.82vw;color:#6fb6c4;line-height:1.3;max-height:3.2vw;overflow:hidden}
-.specs{position:absolute;left:1.1vw;right:1.1vw;bottom:1.1vw;border-top:1px solid #0f3a48;display:-webkit-box;display:-webkit-flex;display:flex}
+.show-kind{font-size:.8vw;color:#9a968d;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.show-name{font-family:"Oswald","Arial Narrow",Arial,sans-serif;font-weight:600;font-size:2.6vw;line-height:1.05;letter-spacing:.06em;margin:.2vw 0}
+.show-note{font-size:.82vw;color:#9a968d;line-height:1.3;max-height:3.2vw;overflow:hidden}
+.specs{position:absolute;left:1.1vw;right:1.1vw;bottom:1.1vw;border-top:1px solid #2d2d2d;display:-webkit-box;display:-webkit-flex;display:flex}
 .specs div{-webkit-flex:1;flex:1;width:0;padding-top:.45vw}
-.specs div+div{padding-left:.7vw;border-left:1px solid #0f3a48}
-.specs strong{display:block;font-family:"Exo 2","Arial Narrow",Arial,sans-serif;font-weight:500;font-size:1.35vw;line-height:1.1;white-space:nowrap}
-.specs span{display:block;font-size:.7vw;color:#6fb6c4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.specs div+div{padding-left:.7vw;border-left:1px solid #2d2d2d}
+.specs strong{display:block;font-family:"Oswald","Arial Narrow",Arial,sans-serif;font-weight:500;font-size:1.35vw;line-height:1.1;white-space:nowrap}
+.specs span{display:block;font-size:.7vw;color:#9a968d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dots{position:absolute;right:1vw;bottom:.4vw}
-.dots i{display:inline-block;width:1.1vw;height:3px;background:#1b5566;margin-left:.3vw}
-.dots i.on{background:#00e5ff}
+.dots i{display:inline-block;width:1.1vw;height:3px;background:#3d3d3d;margin-left:.3vw}
+.dots i.on{background:#c8b28a}
 .swap .show-body,.swap .show-media{-webkit-animation:fadein .7s ease-out;animation:fadein .7s ease-out}
 @-webkit-keyframes fadein{from{opacity:0}} @keyframes fadein{from{opacity:0}}
 
 /* ticker */
-.ticker{position:fixed;left:0;right:0;bottom:0;height:4vw;background:#01040a;border-top:.22vw solid #00e5ff;overflow:hidden;z-index:3}
-.ticker-tag{position:absolute;left:0;top:0;bottom:0;z-index:2;background:#00e5ff;color:#02060a;font-family:"Exo 2","Arial Narrow",Arial,sans-serif;font-weight:500;letter-spacing:.1em;text-transform:uppercase;font-size:1.4vw;line-height:3.8vw;padding:0 1.4vw}
+.ticker{position:fixed;left:0;right:0;bottom:0;height:4vw;background:#101010;border-top:.22vw solid #c8b28a;overflow:hidden;z-index:3}
+.ticker-tag{position:absolute;left:0;top:0;bottom:0;z-index:2;background:#c8b28a;color:#ffffff;font-family:"Oswald","Arial Narrow",Arial,sans-serif;font-weight:500;letter-spacing:.1em;text-transform:uppercase;font-size:1.4vw;line-height:3.8vw;padding:0 1.4vw}
 .ticker-track{position:absolute;left:9vw;top:0;white-space:nowrap;line-height:3.8vw;-webkit-animation:scroll 160s linear infinite;animation:scroll 160s linear infinite}
 .ticker-item{display:inline-block;font-size:1.5vw;padding-right:4vw}
-.ticker-item:before{content:"";display:inline-block;width:.5vw;height:.5vw;background:#00e5ff;margin-right:1vw;vertical-align:middle}
-.ticker-item b{font-family:"IBM Plex Mono",Consolas,monospace;font-weight:500;color:#6fb6c4;margin-right:.7vw;font-size:1.1vw}
+.ticker-item:before{content:"";display:inline-block;width:.5vw;height:.5vw;background:#c8b28a;margin-right:1vw;vertical-align:middle}
+.ticker-item b{font-family:"IBM Plex Mono",Consolas,monospace;font-weight:500;color:#9a968d;margin-right:.7vw;font-size:1.1vw}
 @-webkit-keyframes scroll{from{-webkit-transform:translateX(0)}to{-webkit-transform:translateX(-50%)}}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .spacer{height:5vw}
 
-.fs{position:fixed;right:1.5vw;bottom:5vw;z-index:5;background:#061219;color:#e6fbff;border:1px solid #1b5566;font-family:"IBM Plex Sans",Arial,sans-serif;font-size:.95vw;padding:.7vw 1.1vw;cursor:pointer;-webkit-transition:opacity .4s;transition:opacity .4s}
-.fs:focus{outline:2px solid #00e5ff}
+.fs{position:fixed;right:1.5vw;bottom:5vw;z-index:5;background:#1c1c1c;color:#e4e1da;border:1px solid #3d3d3d;font-family:"IBM Plex Sans",Arial,sans-serif;font-size:.95vw;padding:.7vw 1.1vw;cursor:pointer;-webkit-transition:opacity .4s;transition:opacity .4s}
+.fs:focus{outline:2px solid #c8b28a}
 body.idle .fs{opacity:0}
 @media (prefers-reduced-motion:reduce){.ticker-track{-webkit-animation-duration:400s;animation-duration:400s}}
 
-/* neon grid layer */
-body{background-image:linear-gradient(rgba(0,229,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.045) 1px,transparent 1px);background-size:4vw 4vw}
-.top{border-bottom-color:#00e5ff;box-shadow:0 1px 1.2vw rgba(0,229,255,.28)}
-h1,h2{color:#9ef6ff;text-shadow:0 0 .7vw rgba(0,229,255,.45)}
-.cell .num,.meta strong,.show-name,.specs strong{text-shadow:0 0 .8vw rgba(0,229,255,.45)}
-.cell.hero .num{color:#ffffff;text-shadow:0 0 1.2vw rgba(0,229,255,.7)}
-.cell.hero:before{box-shadow:0 0 1vw #00e5ff}
-.losses,.map-box,.show{box-shadow:0 0 1.2vw rgba(0,229,255,.14),inset 0 0 1.4vw rgba(0,229,255,.06)}
-.map-box,.show,.cell.hero{background-color:rgba(6,18,25,.85)}
-.inc{text-shadow:0 0 .6vw rgba(255,138,31,.55)}
-.logo svg{-webkit-filter:drop-shadow(0 0 .45vw rgba(0,229,255,.75));filter:drop-shadow(0 0 .45vw rgba(0,229,255,.75))}
-.ticker{box-shadow:0 -.3vw 1.4vw rgba(0,229,255,.35)}
-.ticker-tag{box-shadow:0 0 1.2vw rgba(0,229,255,.8)}
-.ticker-item:before{background:#ff8a1f;box-shadow:0 0 .5vw #ff8a1f}
-.show-media .dom{color:#00e5ff}
-.dots i.on{box-shadow:0 0 .5vw #00e5ff}
-.live .dot{box-shadow:0 0 .5vw #00e5ff}
+/* calm theme overrides: accents only in small areas, no fills of bright colour */
+.inc{color:#c8b28a}
+.map-svg path.on{fill:#b49462} .map-svg circle.on{fill:#b49462}
+.map-svg path{stroke:#1c1c1c}
+.alert-count{color:#b49462}
+.cell.hero .inc{border:1px solid #3d3d3d;color:#c8b28a}
+.ticker{border-top:1px solid #3d3d3d}
+.ticker-tag{background:#101010;color:#c8b28a;border-right:1px solid #3d3d3d}
+.ticker-item:before{background:#b49462}
+h1,h2{color:#e4e1da}
+.cell.hero:before{width:.22vw}
 
 /* phone / narrow: stack and scroll */
 @media (max-width:900px){
@@ -135,7 +129,7 @@ h1,h2{color:#9ef6ff;text-shadow:0 0 .7vw rgba(0,229,255,.45)}
   .cell.hero{height:auto;min-height:30vw;padding:3vw 3vw 14vw} .cell.hero .lbl{font-size:3vw} .cell.hero .num{font-size:12vw;left:3vw;bottom:3vw} .cell.hero .inc{font-size:3.4vw;top:3vw;bottom:auto;right:3vw}
   .map-box{height:auto;padding:3vw} .alert-count{font-size:9vw} .alert-count small{font-size:3.2vw} .legend{font-size:3vw;right:3vw;top:3vw} .legend i{width:3vw;height:3vw}
   .map-svg{width:100%;height:62vw}
-  .show{display:block;height:auto;margin-bottom:20px} .show-media{width:auto;height:46vw;border-right:0;border-bottom:1px solid #0f3a48} .show-media .mono{font-size:13vw;line-height:46vw} .show-media img{max-height:40vw} .show-media .dom{font-size:2.6vw}
+  .show{display:block;height:auto;margin-bottom:20px} .show-media{width:auto;height:46vw;border-right:0;border-bottom:1px solid #2d2d2d} .show-media .mono{font-size:13vw;line-height:46vw} .show-media img{max-height:40vw} .show-media .dom{font-size:2.6vw}
   .show-body{width:auto;padding:3vw 3vw 8vw} .show-kind{font-size:2.8vw;white-space:normal} .show-name{font-size:9vw} .show-note{font-size:3.2vw;max-height:none}
   .specs{position:static;margin-top:3vw} .specs strong{font-size:4.6vw} .specs span{font-size:2.6vw} .dots i{width:4vw}
   .ticker{height:12vw} .ticker-tag{font-size:3.6vw;line-height:11.4vw} .ticker-track{left:24vw;line-height:11.4vw} .ticker-item{font-size:4vw} .ticker-item b{font-size:3vw}
@@ -162,7 +156,7 @@ h1,h2{color:#9ef6ff;text-shadow:0 0 .7vw rgba(0,229,255,.45)}
     <div class="head"><h2>Повітряні тривоги</h2><span class="map-time">станом на <b id="alertTime">—</b></span></div>
     <div class="map-box">
       <div class="alert-count"><span id="alertN">—</span><small id="alertTotal">з 26 регіонів</small></div>
-      <div class="legend"><i style="background:#ff8a1f"></i>Тривога<i style="background:#0a2630"></i>Відбій</div>
+      <div class="legend"><i style="background:#b49462"></i>Тривога<i style="background:#262626"></i>Відбій</div>
       <svg class="map-svg" id="map" viewBox="-10 -10 1020 691.7" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"></svg>
     </div>
     <div class="head" style="margin-top:.6vw"><h2>Вітрина Triada Robotics</h2><span class="src">triada-robotics.com</span></div>
